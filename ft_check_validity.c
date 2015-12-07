@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 17:53:23 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/06 23:22:20 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/07 17:45:52 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,12 @@ int		main()
 	ptr = (t_piece *)malloc(sizeof(t_piece));
 	ptr->piece = (char **)malloc(sizeof(char *) * 5);
 	ptr->piece[0] = "....\0";
-	ptr->piece[1] = ".##.\0";
-	ptr->piece[2] = ".##.\0";
-	ptr->piece[3] = "....\0";
-//	ptr->piece[4] = "....\0";
+	ptr->piece[1] = "...\0";
+	ptr->piece[2] = "##..\0";
+	ptr->piece[3] = ".##.\0";
 	ptr->piece[4] = NULL;
 //	ft_putnbr(ft_check_validity(ptr));
 	ft_putchar('\n');
-	while (i < 8)
-		ft_putnbr(ft_count_for_sort(ptr)[i++]);
+	ft_index(ptr);;
 	return (0);
 }
