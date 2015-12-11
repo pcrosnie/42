@@ -12,26 +12,76 @@
 
 #include "fillit.h"
 
-int		ft_check_tetraminos(t_piece *ptr, int i, int j)
+int	ft_check_t(t_piece *ptr, int i, int j)
 {
+	int n;
+	
+	n = 0;
+	if (ptr->piece[i + 1] && ptr->piece[i + 1][j] == '#')
+		n++;
+	if (ptr->piece[i - 1] && ptr->piece[i - 1][j] == '#')
+		n++;
+	if (ptr->piece[i][j + 1] && ptr->piece[i][j + 1] == '#')
+		n++;
+	if (ptr->piece[i][j - 1] && ptr->piece[i][j - 1] == '#')
+		n++;
+	if (n > 1)
+		return (1);
+	return (0);
+}
+
+int     ft_check_glue(t_piece *ptr, int i, int j, int *tmp)
+{
+	if (ft_check_t(ptr, tmp[0], tmp[1]) == 1)
+		return (1);
 	if (ptr->piece[i + 1])
 	{
-		if (ptr->piece[i + 1][j] == '#')
+		if (ptr->piece[i + 1][j] == '#' && (tmp[0] != i + 1 || tmp[1] != j))
 			return (1);
 	}
 	if (ptr->piece[i - 1])
 	{
-		if (ptr->piece[i - 1][j] == '#')
+		if (ptr->piece[i - 1][j] == '#' && (tmp[0] != i - 1 || tmp[1] != j))
 			return (1);
 	}
 	if (ptr->piece[i][j + 1])
 	{
-		if (ptr->piece[i][j + 1] == '#')
+		if (ptr->piece[i][j + 1] == '#' && (tmp[0] != i || tmp[1] != j + 1))
 			return (1);
 	}
 	if (ptr->piece[i][j - 1])
 	{
-		if (ptr->piece[i][j - 1] == '#')
+		if (ptr->piece[i][j - 1] == '#' && (tmp[0] != i || tmp[1] != j - 1))
+			return (1);
+	}
+	return (0);
+}
+
+int		ft_check_tetraminos(t_piece *ptr, int i, int j)
+{
+	int *tmp;
+
+	tmp = (int *)malloc(sizeof(int) * 2);
+	tmp[0] = i;
+	tmp[1] = j;
+	if (ptr->piece[i + 1])
+	{
+		if (ptr->piece[i + 1][j] == '#' && ft_check_glue(ptr, i + 1, j, tmp) == 1)
+			return (1);
+	}
+	if (ptr->piece[i - 1])
+	{
+		if (ptr->piece[i - 1][j] == '#' && ft_check_glue(ptr, i - 1, j, tmp) == 1)
+			return (1);
+	}
+	if (ptr->piece[i][j + 1])
+	{
+		if (ptr->piece[i][j + 1] == '#' && ft_check_glue(ptr, i, j + 1, tmp) == 1)
+			return (1);
+	}
+	if (ptr->piece[i][j - 1])
+	{
+		if (ptr->piece[i][j - 1] == '#' && ft_check_glue(ptr, i, j - 1, tmp) == 1)
 			return (1);
 	}
 	return (0);
@@ -86,4 +136,4 @@ int		ft_check_validity(t_piece *ptr)
    return (0);
    }
 
-*/
+ */
