@@ -12,21 +12,25 @@
 
 #include "fillit.h"
 
-int		main(int argc, char **argv)
+int		main(int argc, char **argv	)
 {
-	int	fd;
-	int	ret;
-	char *str;
-
+	int		fd;
+	int		c;
+	t_piece	*all_piece;
+	
+	all_piece = NULL;
 	fd = 0;
-	str = ft_memalloc(100);
-	if (argc > 1)
+	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
-		ret = read(fd, str, 100);
-		ft_putstr(str);
+		c = ft_get_tetriminos(fd, &lst);
+		if (ft_check_map(&lst) == 1)
 	}
-	return (0);
+	else
+	{
+		write(1, "error", 5);	
+		return (0);
+	}
 }
 
 

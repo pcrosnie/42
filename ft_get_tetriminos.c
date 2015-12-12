@@ -62,34 +62,18 @@ void		ft_lst_push_back(t_piece **lst, char **content, int c)
 		*lst = ft_lst_newi(content, c);
 }
 
-void		ft_make_circulary(t_piece **lst)
-{
-	t_piece *tmp;
-
-	tmp = *lst;
-	if (tmp)
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = NULL;
-	}
-}
-
-int			ft_get_tetriminos(int fd, t_piece **lst)
+void			ft_get_tetriminos(int fd, t_piece **lst)
 {
 	char	buffer[22];
 	char	**tab;
-	char	c;
 
-	c = 'A';
 	while (read(fd, buffer, 21))
 	{
 		tab = ft_buff_to_tab(buffer);
 		ft_lst_push_back(lst, tab, c);
 		c++;
 	}
-	ft_make_circulary(lst);
-	return (c);
+	lst->next = NULL;
 }
 
 void		ft_print_list(t_piece **lst, int c)

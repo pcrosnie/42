@@ -23,6 +23,16 @@ typedef struct	s_piece
 	struct s_piece	*next;
 }				t_piece;
 
+typedef struct	s_noeud
+{
+	int	*coord_piece;
+	int	*tmp;
+	int	etape;
+	struct s_noeud **next;
+	struct s_noeud *prev;
+}				t_noeud;
+
+int	ft_count_pieces(t_piece **adr);
 int		**ft_get_coord(t_piece **adr);
 void	ft_print_coord(int **tab, t_piece **adr);
 char	**ft_buff_to_tab(char *buff);
