@@ -6,25 +6,39 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 17:53:23 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/11 16:41:08 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 13:11:12 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_check_t(char **tab, int i, int j)
+int		ft_check_t(char **tab, int i, int j)
 {
 	int n;
 	
 	n = 0;
-	if (tab[i + 1] && tab[i + 1][j] == '#')
-		n++;
-	if (tab[i - 1] && tab[i - 1][j] == '#')
-		n++;
-	if (tab[i][j + 1] && tab[i][j + 1] == '#')
-		n++;
-	if (tab[i][j - 1] && tab[i][j - 1] == '#')
-		n++;
+	if (tab[i + 1][j])
+	{
+		if (tab[i + 1][j] == '#')
+			n++;
+	}
+	if (i != 0)
+	{
+		if (tab[i - 1][j] == '#')
+		{
+			n++;
+		}
+	}
+	if (tab[i][j + 1])
+	{
+		if (tab[i][j + 1] == '#')
+			n++;
+	}
+	if (tab[i][j - 1])
+	{	
+		if (tab[i][j - 1] == '#')
+			n++;
+	}
 	if (n > 1)
 		return (1);
 	return (0);

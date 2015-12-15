@@ -6,12 +6,11 @@
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:30:07 by dgalide           #+#    #+#             */
-/*   Updated: 2015/12/11 17:24:41 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 13:12:20 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft.h"
 
 char		**ft_buff_to_tab(char *buff)
 {
@@ -24,7 +23,7 @@ char		**ft_buff_to_tab(char *buff)
 	tab = (char **)malloc(sizeof(char *) * 5);
 	while (j < 4)
 	{
-		tab[j] = ft_strsub(&buff[i], 0, 4);
+		tab[j] = ft_strsub(&buff[i], 0, 5);
 		j += 1;
 		i += 5;
 	}
@@ -42,9 +41,11 @@ int	**ft_get_tetriminos(char *argv, int fd)
 	i = 0;
 //    Initialisation a 26, on verra plus tard, ca dependra du nombre de piece pour l'allocation
 	coord = (int **)malloc(sizeof(int *) * 26);
-	while (read(fd, buffer, 21))
+	while (read(fd, buffer, 21) && coord)
 	{
 		coord[i] = (int *)malloc(sizeof(int) * 8);
+		if (!coord[i])
+			return (0);
 		tab = ft_buff_to_tab(buffer);
 		if (ft_check_validity(tab) == 0)
 			return (0);
@@ -72,6 +73,7 @@ void	ft_print_coord(int **tab, int nb)
 			ft_putnbr(tab[i][j]);
 			j++;
 		}
+		ft_putchar('\n');
 		i++;
 	}
 }
