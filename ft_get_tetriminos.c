@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "libft.h"
 
 char		**ft_buff_to_tab(char *buff)
 {
@@ -50,7 +51,7 @@ int	**ft_get_tetriminos(char *argv, int fd)
 		coord[i] = ft_fill_relative_coord(tab, coord[i]);
 		i++;
 	}
-	ft_memdel(tab);
+	ft_memdel((void **)tab);
 	if ((close(fd) != 0))
 		return (0);
 	return (coord);
@@ -85,11 +86,10 @@ int			main(int argc, char **argv)
 	lst = NULL;
 	fd = 0;
 	if (argc == 2)
-		fd = open(argv[1], O_RDONLY);
-	coord = ft_get_tetriminos(argv[1], int fd);
-	if (ft_check_map(&lst) == 1)
 	{
-		ft_print_coord(coord);
+		fd = open(argv[1], O_RDONLY);
+		coord = ft_get_tetriminos(argv[1], fd);
+		ft_print_coord(coord, 5);
 	}
 	else
 		ft_putstr("error");

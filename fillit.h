@@ -34,15 +34,16 @@ typedef struct	s_noeud
 
 int	ft_count_pieces(t_piece **adr);
 int		**ft_get_coord(t_piece **adr);
-void	ft_print_coord(int **tab, t_piece **adr);
+void	ft_print_coord(int **tab, int nb);
 char	**ft_buff_to_tab(char *buff);
-int		ft_get_tetriminos(int fd, t_piece **lst);
-int		ft_check_validity(t_piece *ptr);
+int	**ft_get_tetriminos(char *argv, int fd);
+int		ft_check_validity(char **tab);
 char	*ft_count_for_sort(t_piece *ptr);
 void	ft_index(t_piece *ptr);
 int		ft_check_for_two(t_piece *ptr);
 void	ft_lst_push_back(t_piece **lst, char **content, int c);
 void	ft_print_list(t_piece **lst, int c);
+int	*ft_fill_relative_coord(char **tab, int *str);
 t_piece	*ft_lst_newi(char **content, int split);
 
 #endif

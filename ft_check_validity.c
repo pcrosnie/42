@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int	ft_check_t(t_piece *ptr, int i, int j)
+int	ft_check_t(char **tab, int i, int j)
 {
 	int n;
 	
