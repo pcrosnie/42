@@ -6,7 +6,7 @@
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:30:07 by dgalide           #+#    #+#             */
-/*   Updated: 2015/12/15 20:13:02 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 20:45:51 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int		main(int argc, char **argv)
 			}
 			ft_putstr("Second :\n");
 			ptr = tree;
-			tree = tree->next[1];
+			tree = tree->next[0];
 			ft_fill_next(tree, ft_search_range(ft_count_pieces(ref_tab)));
 			tree->prev = ptr;
 			i = 0;

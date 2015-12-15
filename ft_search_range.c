@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:06:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/15 20:13:08 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 20:43:31 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ struct s_noeud *ft_fill_next_ptr(int *tmp, int nb, t_noeud *adr)
 	ptr->coord_piece = ft_intstrcpy(tmp);
 	//	ft_print_coord_piece(ptr->coord_piece);
 	//	ft_putchar('\n');
-	ptr->etape = nb;
+	ptr->etape = nb + 1;
 	ptr->next = (t_noeud **)malloc(sizeof(t_noeud));
 	ptr->prev = adr;
 	return (ptr);
