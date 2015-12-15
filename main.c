@@ -11,26 +11,15 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "libft.h"
+
+int	**g_index;
 
 int		main(int argc, char **argv	)
 {
-	int		fd;
-	int		c;
-	t_piece	*all_piece;
-	
-	all_piece = NULL;
-	fd = 0;
 	if (argc == 2)
-	{
-		fd = open(argv[1], O_RDONLY);
-		c = ft_get_tetriminos(fd, &lst);
-		if (ft_check_map(&lst) == 1)
-	}
 	else
-	{
-		write(1, "error", 5);	
-		return (0);
-	}
+		return ("error");
 }
 
 

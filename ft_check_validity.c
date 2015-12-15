@@ -17,77 +17,77 @@ int	ft_check_t(t_piece *ptr, int i, int j)
 	int n;
 	
 	n = 0;
-	if (ptr->piece[i + 1] && ptr->piece[i + 1][j] == '#')
+	if (tab[i + 1] && tab[i + 1][j] == '#')
 		n++;
-	if (ptr->piece[i - 1] && ptr->piece[i - 1][j] == '#')
+	if (tab[i - 1] && tab[i - 1][j] == '#')
 		n++;
-	if (ptr->piece[i][j + 1] && ptr->piece[i][j + 1] == '#')
+	if (tab[i][j + 1] && tab[i][j + 1] == '#')
 		n++;
-	if (ptr->piece[i][j - 1] && ptr->piece[i][j - 1] == '#')
+	if (tab[i][j - 1] && tab[i][j - 1] == '#')
 		n++;
 	if (n > 1)
 		return (1);
 	return (0);
 }
 
-int     ft_check_glue(t_piece *ptr, int i, int j, int *tmp)
+int     ft_check_glue(char **tab, int i, int j, int *tmp)
 {
-	if (ft_check_t(ptr, tmp[0], tmp[1]) == 1)
+	if (ft_check_t(tab, tmp[0], tmp[1]) == 1)
 		return (1);
-	if (ptr->piece[i + 1])
+	if (tab[i + 1])
 	{
-		if (ptr->piece[i + 1][j] == '#' && (tmp[0] != i + 1 || tmp[1] != j))
+		if (tab[i + 1][j] == '#' && (tmp[0] != i + 1 || tmp[1] != j))
 			return (1);
 	}
-	if (ptr->piece[i - 1])
+	if (tab[i - 1])
 	{
-		if (ptr->piece[i - 1][j] == '#' && (tmp[0] != i - 1 || tmp[1] != j))
+		if (tab[i - 1][j] == '#' && (tmp[0] != i - 1 || tmp[1] != j))
 			return (1);
 	}
-	if (ptr->piece[i][j + 1])
+	if (tab[i][j + 1])
 	{
-		if (ptr->piece[i][j + 1] == '#' && (tmp[0] != i || tmp[1] != j + 1))
+		if (tab[i][j + 1] == '#' && (tmp[0] != i || tmp[1] != j + 1))
 			return (1);
 	}
-	if (ptr->piece[i][j - 1])
+	if (tab[i][j - 1])
 	{
-		if (ptr->piece[i][j - 1] == '#' && (tmp[0] != i || tmp[1] != j - 1))
+		if (tab[i][j - 1] == '#' && (tmp[0] != i || tmp[1] != j - 1))
 			return (1);
 	}
 	return (0);
 }
 
-int		ft_check_tetraminos(t_piece *ptr, int i, int j)
+int		ft_check_tetraminos(char **tab, int i, int j)
 {
 	int *tmp;
 
 	tmp = (int *)malloc(sizeof(int) * 2);
 	tmp[0] = i;
 	tmp[1] = j;
-	if (ptr->piece[i + 1])
+	if (tab[i + 1])
 	{
-		if (ptr->piece[i + 1][j] == '#' && ft_check_glue(ptr, i + 1, j, tmp) == 1)
+		if (tab[i + 1][j] == '#' && ft_check_glue(tab, i + 1, j, tmp) == 1)
 			return (1);
 	}
-	if (ptr->piece[i - 1])
+	if (tab[i - 1])
 	{
-		if (ptr->piece[i - 1][j] == '#' && ft_check_glue(ptr, i - 1, j, tmp) == 1)
+		if (tab[i - 1][j] == '#' && ft_check_glue(tab, i - 1, j, tmp) == 1)
 			return (1);
 	}
-	if (ptr->piece[i][j + 1])
+	if (tab[i][j + 1])
 	{
-		if (ptr->piece[i][j + 1] == '#' && ft_check_glue(ptr, i, j + 1, tmp) == 1)
+		if (tab[i][j + 1] == '#' && ft_check_glue(tab, i, j + 1, tmp) == 1)
 			return (1);
 	}
-	if (ptr->piece[i][j - 1])
+	if (tab[i][j - 1])
 	{
-		if (ptr->piece[i][j - 1] == '#' && ft_check_glue(ptr, i, j - 1, tmp) == 1)
+		if (tab[i][j - 1] == '#' && ft_check_glue(tab, i, j - 1, tmp) == 1)
 			return (1);
 	}
 	return (0);
 }
 
-int		ft_check_validity(t_piece *ptr)
+int		ft_check_validity(char **tab)
 {
 	int	i;
 	int	j;
@@ -96,14 +96,14 @@ int		ft_check_validity(t_piece *ptr)
 	i = 0;
 	j = 0;
 	n = 0;
-	while (ptr->piece[i])
+	while (tab[i])
 	{
 		j = 0;
-		while (ptr->piece[i][j] && (ptr->piece[i][j] == '.' || ptr->piece[i][j] == '#'))
+		while (tab[i][j] && (tab[i][j] == '.' || tab[i][j] == '#'))
 		{
-			if (ptr->piece[i][j++] == '#')
+			if (tab[i][j++] == '#')
 			{
-				if (ft_check_tetraminos(ptr, i, j - 1) == 0 || j > 4 || n > 4)
+				if (ft_check_tetraminos(tab, i, j - 1) == 0 || j > 4 || n > 4)
 					return (0);
 				n++;
 			}

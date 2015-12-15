@@ -28,4 +28,3 @@ void	btree_apply_prefix(t_btree *root, void (*applyf)(void *))
 			btree_apply_prefix(root->right, applyf);
 	}
 }
-

@@ -31,100 +31,66 @@ char		**ft_buff_to_tab(char *buff)
 	return (tab);
 }
 
-t_piece		*ft_lst_newi(char **content, int split)
-{
-	t_piece *new;
-
-	new = (t_piece *)malloc(sizeof(t_piece));
-	if (new)
-	{
-		new->piece = content;
-		new->split = split;
-		new->next = NULL;
-		return (new);
-	}
-	else
-		return (NULL);
-}
-
-void		ft_lst_push_back(t_piece **lst, char **content, int c)
-{
-	t_piece *tmp;
-
-	tmp = *lst;
-	if (tmp)
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = ft_lst_newi(content, c);
-	}
-	else
-		*lst = ft_lst_newi(content, c);
-}
-
-void			ft_get_tetriminos(int fd, t_piece **lst)
+int	**ft_get_tetriminos(char *argv, int fd)
 {
 	char	buffer[22];
 	char	**tab;
+	int	**coord;
+	int	i;
 
+	i = 0;
+//    Initialisation a 26, on verra plus tard, ca dependra du nombre de piece pour l'allocation
+	coord = (int **)malloc(sizeof(int *) * 26);
 	while (read(fd, buffer, 21))
 	{
+		coord[i] = (int *)malloc(sizeof(int) * 8);
 		tab = ft_buff_to_tab(buffer);
-		ft_lst_push_back(lst, tab, c);
-		c++;
-	}
-	lst->next = NULL;
-}
-
-void		ft_print_list(t_piece **lst, int c)
-{
-	t_piece *tmp;
-	int		i;
-
-	tmp = *lst;
-	i = 1;
-	while (i < c && tmp)
-	{
-		ft_putchar(tmp->split);
-		ft_putchar('\n');
-		ft_print_char_tab(tmp->piece);
-		ft_putchar('\n');
-
-		i++;
-		tmp = tmp->next;
-	}
-}
-
-int		ft_check_map(t_piece **adr)
-{
-	t_piece *ptr;
-
-	ptr = *adr;
-	while (ptr != NULL)
-	{
-		if (ft_check_validity(ptr) == 0)
+		if (ft_check_validity(tab) == 0)
 			return (0);
-		ptr = ptr->next;
+		coord[i] = ft_fill_relative_coord(tab, coord[i]);
+		i++;
 	}
-	return (1);
+	ft_memdel(tab);
+	if ((close(fd) != 0))
+		return (0);
+	return (coord);
+}
+
+void	ft_print_coord(int **tab, int nb)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (i < nb)
+	{
+		j = 0;
+		while (j < 8)
+		{
+			ft_putnbr(tab[i][j]);
+			j++;
+		}
+		i++;
+	}
 }
 
 int			main(int argc, char **argv)
 {
 	int fd;
 	int c;
+	int **coord;
 	t_piece *lst;
 
 	lst = NULL;
 	fd = 0;
 	if (argc == 2)
 		fd = open(argv[1], O_RDONLY);
-	c = ft_get_tetriminos(fd, &lst);
+	coord = ft_get_tetriminos(argv[1], int fd);
 	if (ft_check_map(&lst) == 1)
 	{
-		ft_print_list(&lst, c);
-		ft_print_coord(ft_get_coord(&lst), &lst);
-	}	
+		ft_print_coord(coord);
+	}
 	else
 		ft_putstr("error");
 	return (0);
