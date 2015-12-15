@@ -6,7 +6,7 @@
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:30:07 by dgalide           #+#    #+#             */
-/*   Updated: 2015/12/15 14:57:10 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 20:13:02 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ int	**ft_get_tetriminos(char *argv, int fd)
 	return (coord);
 }
 
-void	ft_print_coord(int **tab, int nb)
+void	ft_print_coord(int **tab)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while (i < nb)
+	while (tab[i])
 	{
 		j = 0;
 		while (j < 8)
@@ -79,27 +79,55 @@ void	ft_print_coord(int **tab, int nb)
 	}
 }
 
-struct s_noeud	*ft_count_start_positions
+void	ft_print_coord_piece(int *tab)
+{
+	int		i;
+
+	i = 0;
+	while (i < 8)
+		ft_putnbr(tab[i++]);
+}
 
 int		main(int argc, char **argv)
 {
 	int fd;
-	int c;
-	t_piece *lst;
+	int i;
+	t_noeud *tree;
+	t_noeud *ptr;
 
-	lst = NULL;
+	tree = NULL;
 	fd = 0;
+	i = 0;
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
 		ref_tab = ft_get_tetriminos(argv[1], fd);
-		
+		if (ref_tab)
+		{
+			tree = ft_def_start_possible_position();
+			while (tree->next[i] != NULL)
+			{
+				ft_print_coord_piece(tree->next[i++]->coord_piece);
+				ft_putchar('\n');
+			}
+			ft_putstr("Second :\n");
+			ptr = tree;
+			tree = tree->next[1];
+			ft_fill_next(tree, ft_search_range(ft_count_pieces(ref_tab)));
+			tree->prev = ptr;
+			i = 0;
+			while (tree->next[i] != NULL)
+			{
+				ft_print_coord_piece(tree->next[i++]->coord_piece);
+				ft_putchar('\n');
+			}
+		}
 		if (!ref_tab)
 		{
 			ft_putstr("error");
 			return (0);
 		}
-		ft_print_coord(ref_tab, 5);
+//		ft_print_coord(ref_tab);
 	}
 	return (0);
 }

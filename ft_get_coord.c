@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 16:42:15 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/15 13:52:03 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 15:49:22 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		**ft_get_coord(t_piece **adr)
 	i = 0;
 	j = 0;
 	ptr = *adr;
-	tab = (int **)malloc(sizeof(int *) * ft_count_pieces(adr));
+	tab = (int **)malloc(sizeof(int *) * ft_count_pieces(ref_tab));
 	while (ptr != NULL)
 	{
 		tab[i] = (int *)malloc(sizeof(int) * 8);

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 13:27:01 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/11 15:20:02 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 19:49:39 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strnequ(const char *s1, const char *s2, size_t size);
 int					ft_strequ(const char *s1, const char *s2);
+
+long				ft_power(int nb, int power);
 
 char				*ft_strdup(const char *str);
 char				*ft_strsub(const char *s, unsigned int start, size_t len);

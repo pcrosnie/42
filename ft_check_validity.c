@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 17:53:23 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/15 13:21:13 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 17:05:53 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ int		ft_check_t(char **tab, int i, int j)
 	int n;
 	
 	n = 0;
-	if (tab[i + 1][j])
+	if (i < 3)
 	{
 		if (tab[i + 1][j] == '#')
 			n++;
 	}
-	if (i != 0)
+	if (i > 0)
 	{
 		if (tab[i - 1][j] == '#')
 		{
 			n++;
 		}
 	}
-	if (tab[i][j + 1])
+	if (j < 3)
 	{
 		if (tab[i][j + 1] == '#')
 			n++;
 	}
-	if (tab[i][j - 1])
+	if (j > 0)
 	{	
 		if (tab[i][j - 1] == '#')
 			n++;

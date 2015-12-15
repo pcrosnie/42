@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/15 14:57:13 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 20:08:48 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,14 @@ typedef struct	s_noeud
 	struct s_noeud *prev;
 }				t_noeud;
 
-int	ft_count_pieces(t_piece **adr);
+void	ft_fill_next(t_noeud *ptr, int nb);
+void	ft_print_coord_piece(int *tab);
+t_noeud	*ft_def_start_possible_position(void);
+int		ft_strintstr(int *tmp, int *coord);
+int		ft_search_range(int nb);
+int	ft_count_pieces(int **tab);
 int		**ft_get_coord(t_piece **adr);
-void	ft_print_coord(int **tab, int nb);
+void	ft_print_coord(int **tab);
 char	**ft_buff_to_tab(char *buff);
 int	**ft_get_tetriminos(char *argv, int fd);
 int		ft_check_validity(char **tab);
