@@ -6,7 +6,7 @@
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:30:07 by dgalide           #+#    #+#             */
-/*   Updated: 2015/12/15 13:12:20 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 14:57:10 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	**ft_get_tetriminos(char *argv, int fd)
 		coord[i] = ft_fill_relative_coord(tab, coord[i]);
 		i++;
 	}
+	coord[i] = NULL;
 	ft_memdel((void **)tab);
 	if ((close(fd) != 0))
 		return (0);
@@ -78,11 +79,12 @@ void	ft_print_coord(int **tab, int nb)
 	}
 }
 
-int			main(int argc, char **argv)
+struct s_noeud	*ft_count_start_positions
+
+int		main(int argc, char **argv)
 {
 	int fd;
 	int c;
-	int **coord;
 	t_piece *lst;
 
 	lst = NULL;
@@ -90,10 +92,14 @@ int			main(int argc, char **argv)
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
-		coord = ft_get_tetriminos(argv[1], fd);
-		ft_print_coord(coord, 5);
+		ref_tab = ft_get_tetriminos(argv[1], fd);
+		
+		if (!ref_tab)
+		{
+			ft_putstr("error");
+			return (0);
+		}
+		ft_print_coord(ref_tab, 5);
 	}
-	else
-		ft_putstr("error");
 	return (0);
 }

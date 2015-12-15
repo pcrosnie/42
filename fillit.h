@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/11 17:24:43 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 14:57:13 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <fcntl.h>
 # include "libft.h"
+
+int		**ref_tab;
 
 typedef struct	s_piece
 {
@@ -26,7 +28,6 @@ typedef struct	s_piece
 typedef struct	s_noeud
 {
 	int	*coord_piece;
-	int	*tmp;
 	int	etape;
 	struct s_noeud **next;
 	struct s_noeud *prev;

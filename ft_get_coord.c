@@ -6,24 +6,19 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 16:42:15 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/15 12:14:31 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/15 13:52:03 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		ft_count_pieces(t_piece **adr)
+int		ft_count_pieces(int **tab)
 {
 	int	i;
-	t_piece *ptr;
 
 	i = 0;
-	ptr = *adr;
-	while (ptr != NULL)
-	{
-		ptr = ptr->next;
+	while (tab[i])
 		i++;
-	}
 	return (i);
 }
 
