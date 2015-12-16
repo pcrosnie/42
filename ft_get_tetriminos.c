@@ -6,7 +6,7 @@
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:30:07 by dgalide           #+#    #+#             */
-/*   Updated: 2015/12/15 20:45:51 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/16 16:41:58 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ int		main(int argc, char **argv)
 			ft_putstr("error");
 			return (0);
 		}
-//		ft_print_coord(ref_tab);
 	}
 	return (0);
 }

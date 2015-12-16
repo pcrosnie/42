@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 17:53:23 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/15 17:05:53 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/16 15:33:26 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,22 @@ int     ft_check_glue(char **tab, int i, int j, int *tmp)
 {
 	if (ft_check_t(tab, tmp[0], tmp[1]) == 1)
 		return (1);
-	if (tab[i + 1])
+	if (i < 3)
 	{
 		if (tab[i + 1][j] == '#' && (tmp[0] != i + 1 || tmp[1] != j))
 			return (1);
 	}
-	if (tab[i - 1])
+	if (i > 0)
 	{
 		if (tab[i - 1][j] == '#' && (tmp[0] != i - 1 || tmp[1] != j))
 			return (1);
 	}
-	if (tab[i][j + 1])
+	if (j < 3)
 	{
 		if (tab[i][j + 1] == '#' && (tmp[0] != i || tmp[1] != j + 1))
 			return (1);
 	}
-	if (tab[i][j - 1])
+	if (j > 0)
 	{
 		if (tab[i][j - 1] == '#' && (tmp[0] != i || tmp[1] != j - 1))
 			return (1);
@@ -78,22 +78,22 @@ int		ft_check_tetraminos(char **tab, int i, int j)
 	tmp = (int *)malloc(sizeof(int) * 2);
 	tmp[0] = i;
 	tmp[1] = j;
-	if (tab[i + 1])
+	if (i < 3)
 	{
 		if (tab[i + 1][j] == '#' && ft_check_glue(tab, i + 1, j, tmp) == 1)
 			return (1);
 	}
-	if (tab[i - 1])
+	if (i > 0)
 	{
 		if (tab[i - 1][j] == '#' && ft_check_glue(tab, i - 1, j, tmp) == 1)
 			return (1);
 	}
-	if (tab[i][j + 1])
+	if (j < 3)
 	{
 		if (tab[i][j + 1] == '#' && ft_check_glue(tab, i, j + 1, tmp) == 1)
 			return (1);
 	}
-	if (tab[i][j - 1])
+	if (j > 0)
 	{
 		if (tab[i][j - 1] == '#' && ft_check_glue(tab, i, j - 1, tmp) == 1)
 			return (1);

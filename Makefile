@@ -3,21 +3,35 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rdieulan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/12/05 17:11:22 by pcrosnie          #+#    #+#              #
-#    Updated: 2015/12/06 17:06:24 by pcrosnie         ###   ########.fr        #
+#    Created: 2015/12/02 14:30:37 by rdieulan          #+#    #+#              #
+#    Updated: 2015/12/16 14:48:19 by rdieulan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c
+NAME = fillit
 
-LIB = lft
+SRC =	main.c\
+		ft_get_tetriminos.c\
+		ft_check_validity.c\
+		ft_get_coord\
+		ft_search_range\
+		ft_tree.c\
+
+OBJS = $(SRC:.c=.o)
+
+FLAG = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME):
-	gcc 
-	$(CC) $(OBJ) -L. -$(LIB)
+	gcc -c $(FLAG) $(SRC) -o $(NAME)
 
-.PHONY: all $(NAME) 
+clean:
+	/bin/rm -f $(OBJS)
+
+fclean: clean
+	/bin/rm -f $(NAME)
+
+re: fclean all
