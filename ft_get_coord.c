@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 16:42:15 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/16 16:41:56 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/16 17:26:29 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		*ft_fill_relative_coord(char **tab, int *str)
 	return (str);
 }
 
+/*
 int		**ft_get_coord(t_piece **adr)
 {
 	t_piece *ptr;
@@ -79,3 +80,4 @@ int		**ft_get_coord(t_piece **adr)
 	}
 	return (tab);
 }
+*/

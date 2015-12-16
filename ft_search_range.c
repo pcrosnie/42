@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:06:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/16 16:30:37 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/16 17:29:16 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ int		ft_strintstr(int *tmp, int *coord)
 		{
 			if ((tmp[0] + tmp[i] == coord[0] + coord[j])
 					&& (tmp[1] + tmp[i + 1] == coord[1] + coord[j + 1]))
-			{
 				return (0);
-			}
+			if (tmp[0] + tmp[i] == coord[0] && tmp[1] + tmp[i + 1] == coord[1])
+				return (0);
+			if (coord[0] + coord[j] == tmp[0] && coord[1] + coord[j + 1] == tmp[1])
+				return (0);
 			j += 2;
 		}
 		i += 2;
