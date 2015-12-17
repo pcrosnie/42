@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/17 15:12:09 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:53:46 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int				*ft_fill_relative_coord(char **tab, int *str); // globale
 int				ft_count_pieces(int **tab); // globale
 
 // ft_get_tetriminos.c
-int				**ft_get_tetriminos(char *argv, int fd); // globale
+int				**ft_get_tetriminos(int fd); // globale
 char			**ft_buff_to_tab(char *buff); // static
 void			ft_print_coord(int **tab); // static
 void			ft_print_coord_piece(int *tab); // static
