@@ -6,7 +6,7 @@
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:30:07 by dgalide           #+#    #+#             */
-/*   Updated: 2015/12/16 17:29:18 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:12:21 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		main(int argc, char **argv)
 	t_noeud *tree;
 	t_noeud *ptr;
 	t_noeud	*ptr2;
+	t_noeud *ptr3;
 
 	tree = NULL;
 	fd = 0;
@@ -131,6 +132,16 @@ int		main(int argc, char **argv)
 				ft_print_coord_piece(ptr2->next[i++]->coord_piece);
 				ft_putchar('\n');
 			}
+			ptr3 = ptr2->next[0];
+			ft_fill_next(ptr3, ft_search_range(ft_count_pieces(ref_tab)));
+			i = 0;
+			ft_putstr("Fourth :\n");
+			while (ptr3->next[i] != NULL)
+			{
+				ft_print_coord_piece(ptr3->next[i++]->coord_piece);
+				ft_putchar('\n');
+			}
+
 		}
 		if (!ref_tab)
 		{

@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/16 16:50:50 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:12:09 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,9 @@ int				ft_strintstr(int *tmp, int *coord); // static
 int				ft_check_overlap(int *tmp, t_noeud *ptr); // static
 struct s_noeud	*ft_fill_next_ptr(int *tmp, int nb, t_noeud *adr); // static
 void			ft_fill_next(t_noeud *ptr, int nb); // static
+
+// ft_cruise.c
+int				ft_check_sol(t_noeud *ptr);
+int				*ft_set_tab_vertical(int n);
 
 #endif

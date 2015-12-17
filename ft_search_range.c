@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:06:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/16 17:29:16 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/17 11:59:10 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,18 @@ int		ft_strintstr(int *tmp, int *coord)
 	j = 0;
 	if (tmp[i] == coord[j] && tmp[i + 1] == coord[j + 1])
 		return (0);
+	i = 2;
 	while (i < 8)
 	{
 		j = 0;
 		while (j < 8)
 		{
-			if ((tmp[0] + tmp[i] == coord[0] + coord[j])
-					&& (tmp[1] + tmp[i + 1] == coord[1] + coord[j + 1]))
+			if ((tmp[0] + tmp[j] == coord[0] + coord[i])
+					&& (tmp[1] + tmp[j + 1] == coord[1] + coord[i + 1]))
 				return (0);
-			if (tmp[0] + tmp[i] == coord[0] && tmp[1] + tmp[i + 1] == coord[1])
+			if (tmp[0] + tmp[j] == coord[0] && tmp[1] + tmp[j + 1] == coord[1])
 				return (0);
-			if (coord[0] + coord[j] == tmp[0] && coord[1] + coord[j + 1] == tmp[1])
+			if (coord[0] + coord[i] == tmp[0] && coord[1] + coord[i + 1] == tmp[1])
 				return (0);
 			j += 2;
 		}
@@ -129,6 +130,10 @@ void	ft_fill_next(t_noeud *ptr, int nb)
 		{
 			if (ft_check_limits(tmp, nb) == 1 && ft_check_overlap(tmp, ptr) == 1)
 				ptr->next[index++] = ft_fill_next_ptr(tmp, ptr->etape, ptr);
+//			ft_putnbr(ft_check_limits(tmp, nb));
+//			ft_putchar('\n');
+//			ft_putnbr(ft_check_overlap(tmp, ptr));
+//			ft_putchar('\n');
 			j++;
 			tmp[0]++;
 		}
