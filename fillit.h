@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/17 16:48:33 by rdieulan         ###   ########.fr       */
+/*   Updated: 2015/12/17 19:49:30 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct		s_noeud
 {
 	int				*coord_piece;
 	int				etape;
-	int				nb_noeud;
 	struct s_noeud	**next;
 	struct s_noeud	*prev;
 }					t_noeud;
@@ -56,6 +55,8 @@ void				ft_fill_next(t_noeud *ptr, int nb); // static
 
 // ft_cruise.c
 int					ft_check_sol(t_noeud *ptr);
+void				ft_fill_sol_tab(t_noeud *ptr);
 int					*ft_set_tab_vertical(int n);
-
+int					*ft_set_horizontal(int n);
+int					ft_check_for_range_max(int *tab, int *str, int n);
 #endif
