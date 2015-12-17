@@ -6,7 +6,7 @@
 /*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/06 16:30:07 by dgalide           #+#    #+#             */
-/*   Updated: 2015/12/17 15:12:21 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:46:56 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		**ft_buff_to_tab(char *buff)
 	return (tab);
 }
 
-int	**ft_get_tetriminos(char *argv, int fd)
+int	**ft_get_tetriminos(int fd)
 {
 	char	buffer[22];
 	char	**tab;
