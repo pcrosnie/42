@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:42:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/17 19:49:32 by rdieulan         ###   ########.fr       */
+/*   Updated: 2015/12/17 21:02:17 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,76 @@
 
 int		ft_sol_range(int **sol_tab)
 {
+	int i;
+	int j;
+	int range;
 
+	range = 0;
+	i = 0;
+	j = 0;
+	while (i < ft_count_pieces(sol_tab))
+	{
+		j = 0;
+		while (j < 8)
+		{
+			if (sol_tab[i][j] > range)
+				range = sol_tab[i][j];
+			j++;
+		}
+		i++;
+	}
+	return (range);
 }
 
 char	**ft_convert(int **sol_tab)
 {
 	char	**tmp;
+	int i;
+	int j;
+	int srange;
+	char lettre;
 
-	tmp = (char **)malloc(sizeof(char *) * ft_sol_range(sol_tab));
-
+	i = 0;
+	j = 2;
+	srange = ft_sol_range(sol_tab);
+	lettre = 'A';
+	tmp = (char **)ft_memalloc(sizeof(char *) * (srange + 1));
+	while (i < ft_count_pieces(sol_tab))
+	{
+		tmp[i] = (char *)ft_memalloc(sizeof(char) * (srange + 1));
+		tmp[i][srange] = '\n';
+		tmp[sol_tab[i][0]][sol_tab[i][1]] = lettre;
+		j = 2;
+		while (j < 8)
+		{
+			tmp[sol_tab[j][0] + sol_tab[j][i]]
+				[sol_tab[j][1] + sol_tab[j][i]] = lettre;
+			j++;
+		}
+		lettre++;
+	}
+	tmp[srange][0] = '\0';
+	return (tmp);
 }
 
 void	ft_display(int **sol_tab)
 {
 	int i;
-	char lettre;
+	int j;
 	char **tmp;
 
 	i = 0;
-	lettre = 'A';
+	j = 0;
 	tmp = ft_convert(sol_tab);
-	while (i < ft_count_pieces(ref_tab))
+	while (tmp[i][0] != '\0')
 	{
-		ft_putstr(tmp[i]);
+		while (tmp[i][j] != '\n')
+		{
+			ft_putchar(tmp[i][j]);
+			j++;
+		}
+		ft_putchar('\n');
+		j = 0;
 		i++;
 	}
 }
