@@ -6,7 +6,7 @@
 #    By: rdieulan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 14:30:37 by rdieulan          #+#    #+#              #
-#    Updated: 2015/12/16 16:50:30 by pcrosnie         ###   ########.fr        #
+#    Updated: 2015/12/17 15:42:04 by rdieulan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC =	ft_get_tetriminos.c\
 		ft_get_coord.c\
 		ft_search_range.c\
 		ft_tree.c\
+		libft.a\
 
 OBJS = $(SRC:.c=.o)
 
