@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 11:58:37 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 17:38:17 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/18 18:16:35 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,9 @@ int		main(int argc, char **argv)
 				ft_print_coord_piece(ptr3->next[i++]->coord_piece);
 				ft_putchar('\n');
 			}
-			ft_putnbr(ft_check_sol(ptr3->next[0]));
+			ft_putchar('\n');
+			ft_fill_sol_tab(ptr3->next[0]);
+			ft_print_coord(sol_tab);
 			ft_putchar('\n');
 		}
 		if (!ref_tab)
