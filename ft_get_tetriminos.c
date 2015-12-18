@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_get_tetriminos.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dgalide <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/06 16:30:07 by dgalide           #+#    #+#             */
-/*   Updated: 2015/12/17 19:49:28 by rdieulan         ###   ########.fr       */
+/*   Created: 2015/12/18 11:58:37 by pcrosnie          #+#    #+#             */
+/*   Updated: 2015/12/18 15:59:06 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,11 @@ void	ft_print_coord_piece(int *tab)
 	int		i;
 
 	i = 0;
+	ft_putchar('A');
 	while (i < 8)
 		ft_putnbr(tab[i++]);
 }
-
+/*
 int		main(int argc, char **argv)
 {
 	int fd;
@@ -103,7 +104,7 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		fd = open(argv[1], O_RDONLY);
-		ref_tab = ft_get_tetriminos(argv[1], fd);
+		ref_tab = ft_get_tetriminos(fd);
 		if (ref_tab)
 		{
 			tree = ft_def_start_possible_position();
@@ -123,7 +124,9 @@ int		main(int argc, char **argv)
 				ft_print_coord_piece(tree->next[i++]->coord_piece);
 				ft_putchar('\n');
 			}
+			ft_putchar('X');
 			ptr2 = tree->next[0];
+			ft_putchar('X');
 			ft_fill_next(ptr2, ft_search_range(ft_count_pieces(ref_tab)));
 			i = 0;
 			ft_putstr("Third :\n");
@@ -151,3 +154,4 @@ int		main(int argc, char **argv)
 	}
 	return (0);
 }
+*/

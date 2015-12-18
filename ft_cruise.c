@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 11:56:51 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/17 19:49:34 by rdieulan         ###   ########.fr       */
+/*   Updated: 2015/12/18 15:57:57 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,18 @@ void	ft_fill_sol_tab(t_noeud *ptr)
 {
 	int	i;
 
-	i = ft_count_pieces(ref_tab);
-	sol_tab = (int **)malloc(sizeof(int *) * i);
-	while (i > 0)
+	i = 0;
+	if (!ptr)
 	{
-		sol_tab[i--] = (int *)malloc(sizeof(int) * 8);
-		sol_tab[i--] = ft_intstrcpy(ptr->coord_piece);
+		ft_putstr("Je suis la");
+	}
+	sol_tab = (int **)malloc(sizeof(int *) * i);
+	while (i < ft_count_pieces(ref_tab))
+	{
+		ft_putchar('A');
+		sol_tab[i] = (int *)malloc(sizeof(int) * 8);
+		sol_tab[i] = ft_intstrcpy(ptr->coord_piece);
+		i++;
 		ptr = ptr->prev;
 	}
 	sol_tab[ft_count_pieces(ref_tab) + 1] = NULL;
