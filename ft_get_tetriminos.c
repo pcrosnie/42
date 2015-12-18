@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 11:58:37 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 15:59:06 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/18 17:38:17 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,10 @@ void	ft_print_coord_piece(int *tab)
 	int		i;
 
 	i = 0;
-	ft_putchar('A');
 	while (i < 8)
 		ft_putnbr(tab[i++]);
 }
-/*
+
 int		main(int argc, char **argv)
 {
 	int fd;
@@ -115,18 +114,16 @@ int		main(int argc, char **argv)
 			}
 			ft_putstr("Second :\n");
 			ptr = tree;
-			tree = tree->next[0];
-			ft_fill_next(tree, ft_search_range(ft_count_pieces(ref_tab)));
-			tree->prev = ptr;
+			ptr = tree->next[0];
+			ft_fill_next(ptr, ft_search_range(ft_count_pieces(ref_tab)));
+			ptr->prev = tree;
 			i = 0;
-			while (tree->next[i] != NULL)
+			while (ptr->next[i] != NULL)
 			{
-				ft_print_coord_piece(tree->next[i++]->coord_piece);
+				ft_print_coord_piece(ptr->next[i++]->coord_piece);
 				ft_putchar('\n');
 			}
-			ft_putchar('X');
-			ptr2 = tree->next[0];
-			ft_putchar('X');
+			ptr2 = ptr->next[0];
 			ft_fill_next(ptr2, ft_search_range(ft_count_pieces(ref_tab)));
 			i = 0;
 			ft_putstr("Third :\n");
@@ -144,7 +141,8 @@ int		main(int argc, char **argv)
 				ft_print_coord_piece(ptr3->next[i++]->coord_piece);
 				ft_putchar('\n');
 			}
-
+			ft_putnbr(ft_check_sol(ptr3->next[0]));
+			ft_putchar('\n');
 		}
 		if (!ref_tab)
 		{
@@ -154,4 +152,4 @@ int		main(int argc, char **argv)
 	}
 	return (0);
 }
-*/
+

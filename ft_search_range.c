@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:06:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 13:53:39 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/18 17:34:31 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ struct s_noeud *ft_fill_next_ptr(int *tmp, int nb, t_noeud *adr)
 	ptr = (t_noeud *)malloc(sizeof(t_noeud));
 	ptr->coord_piece = ft_intstrcpy(tmp);
 	ptr->etape = nb + 1;
-	ptr->next_max = 0;
 	ptr->next = (t_noeud **)malloc(sizeof(t_noeud));
 	ptr->prev = adr;
 	return (ptr);
@@ -137,8 +136,7 @@ void	ft_fill_next(t_noeud *ptr, int nb)
 		i++;
 		tmp[1]++;
 	}
-	ptr->next = NULL;
-	ptr->next_max = index;
+	ptr->next[index] = NULL;
 }
 
 t_noeud		*ft_def_start_possible_position()
@@ -151,7 +149,6 @@ t_noeud		*ft_def_start_possible_position()
 	nb = ft_search_range(ft_count_pieces(ref_tab));
 	ptr = (t_noeud *)malloc(sizeof(t_noeud));
 	ptr->etape = 0;
-	ptr->next_max = 0;
 	ptr->coord_piece = (int *)malloc(sizeof(int) * 8);
 	ptr->coord_piece[0] = 100;
 	ptr->next = (t_noeud **)malloc(sizeof(t_noeud *) * nb * nb);

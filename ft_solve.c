@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 12:09:07 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 15:59:41 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/18 17:17:08 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,21 @@
 
 int		ft_check_end(t_noeud *ptr)
 {
-	int i;
-	t_noeud *ptr2;
-
-	i = 0;
-	ptr2 = ptr->prev;
-	while (ptr2 != NULL)
-	{
-		i++;
-		if (ptr != ptr2->next[ptr2->next_max])
-			return (0);
-		ptr = ptr2;
-		ptr2 = ptr2->prev;
-	}
-	return (1);
+	if (ptr->prev == NULL && ptr->next_max[0] == ptr->next_max[1])
+			return (1);
+	return (0);
 }
 
 void	ft_free_node(t_noeud *ptr)
 {
 	int		i;
 
-	i = 0;
-	while (ptr->next == NULL && i < ptr->next_max)
-	{
+	i = ptr->next_max[0];
+	while (i < ptr->next_max[1])
 		i++;
-	}
 	free(ptr->next[i]->coord_piece);
 	free(ptr->next[i]->next);
-	free(ptr->next[i]);
+	ptr->next[i] = NULL;
 }
 
 void	ft_solve(t_noeud *ptr)
@@ -51,9 +38,12 @@ void	ft_solve(t_noeud *ptr)
 
 	n = 0;
 	i = 0;
+	ft_putnbr(ft_check_sol(ptr));
 	while (ft_check_end(ptr) != 1 && ft_check_sol(ptr) != 1)
 	{
-		ft_fill_next(ptr, ft_search_range(ft_count_pieces(ref_tab)));
+
+		if (ptr->next_max[0] < ptr->next_max[1])
+			ft_fill_next(ptr, ft_search_range(ft_count_pieces(ref_tab)));
 		if (ptr->etape == ft_count_pieces(ref_tab))
 		{
 			if (ft_check_sol(ptr) == 1)
@@ -63,14 +53,11 @@ void	ft_solve(t_noeud *ptr)
 				ft_fill_sol_tab(ptr);
 				n = 1;
 			}
+			ft_putchar('A');
 		}
-		i = 0;
-		if (ptr->next_max > 1)
-		{
-			while (ptr->next == NULL && i < ptr->next_max - 1)
-				i++;
+		i = ptr->next_max[0]++;
+		if (i < ptr->next_max[1])
 			ptr = ptr->next[i];
-		}
 		else
 		{
 			ptr = ptr->prev;
@@ -92,9 +79,9 @@ int		main(int argc, char **argv)
 	if (ref_tab)
 	{
 		ptr = ft_def_start_possible_position();
-		ft_putchar('1');
 		ft_solve(ptr);
-		ft_putchar('2');
+		if (!sol_tab)
+			return (0);
 		while (i < 4)
 		{
 			ft_putchar('3');

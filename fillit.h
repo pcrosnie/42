@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 14:18:34 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/18 16:36:15 by pcrosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct		s_noeud
 {
 	int				*coord_piece;
 	int				etape;
-	int				next_max;
+	int				*next_max;
 	struct s_noeud	**next;
 	struct s_noeud	*prev;
 }					t_noeud;
