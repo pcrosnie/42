@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:42:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 17:24:20 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/18 18:15:59 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_sol_range(int **sol_tab)
 		}
 		i++;
 	}
-	return (range);
+	return (range + 1);
 }
 
 char	**ft_convert(int **sol_tab)
