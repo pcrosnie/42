@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 12:09:07 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 17:17:08 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/18 18:38:23 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_solve(t_noeud *ptr)
 	}
 }
 
-int		main(int argc, char **argv)
+/*int		main(int argc, char **argv)
 {
 	t_noeud	*ptr;
 	int		fd;
@@ -89,4 +89,4 @@ int		main(int argc, char **argv)
 		}
 	}
 	return (0);
-}
+}*/

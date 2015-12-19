@@ -6,14 +6,14 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:42:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 18:15:59 by rdieulan         ###   ########.fr       */
+/*   Updated: 2015/12/19 20:40:21 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
-int		ft_sol_range(int **sol_tab)
+int		ft_sol_range()
 {
 	int i;
 	int j;
@@ -36,7 +36,7 @@ int		ft_sol_range(int **sol_tab)
 	return (range + 1);
 }
 
-char	**ft_convert(int **sol_tab)
+char	**ft_convert()
 {
 	char	**tmp;
 	int i;
@@ -46,47 +46,50 @@ char	**ft_convert(int **sol_tab)
 
 	i = 0;
 	j = 2;
-	srange = ft_sol_range(sol_tab);
+	srange = ft_sol_range();
+	ft_putstr("sol range :\n");
+	ft_putnbr(ft_sol_range());
+	ft_putchar('\n');
 	lettre = 'A';
-	tmp = (char **)ft_memalloc(sizeof(char *) * (srange + 1));
+	tmp = ft_newc2d(srange, srange, '.');
+	i = 0;
 	while (i < ft_count_pieces(sol_tab))
 	{
-		tmp[i] = (char *)ft_memalloc(sizeof(char) * (srange + 1));
-		tmp[i][srange] = '\n';
-		tmp[sol_tab[i][0]][sol_tab[i][1]] = lettre;
+		tmp[sol_tab[i][1]][sol_tab[i][0]] = lettre;
 		j = 2;
 		while (j < 8)
 		{
-			tmp[sol_tab[j][0] + sol_tab[j][i]]
-				[sol_tab[j][1] + sol_tab[j][i]] = lettre;
-			j++;
+			tmp[sol_tab[i][j + 1] + sol_tab[i][1]]
+				[sol_tab[i][j] + sol_tab[i][0]] = lettre;
+			j += 2;
 		}
+		i++;
 		lettre++;
 	}
-	tmp[srange][0] = '\0';
 	return (tmp);
 }
 
-void	ft_display(int **sol_tab)
+void	ft_display(char **tab)
 {
 	int i;
 	int j;
-	char **tmp;
+	int		srange;
 
 	i = 0;
 	j = 0;
-	tmp = ft_convert(sol_tab);
-	while (tmp[i][0] != '\0')
+	srange = ft_sol_range();
+	while (i < srange)
 	{
-		while (tmp[i][j] != '\n')
+		while (j < srange)
 		{
-			ft_putchar(tmp[i][j]);
+			ft_putchar(tab[i][j]);
 			j++;
 		}
 		ft_putchar('\n');
 		j = 0;
 		i++;
 	}
+	exit(0);
 }
 
 void	ft_parkour(t_noeud *tree, int i)
@@ -94,11 +97,15 @@ void	ft_parkour(t_noeud *tree, int i)
 	if (tree->etape == ft_count_pieces(ref_tab))
 	{
 		if ((ft_check_sol(tree) == 0) && sol_tab == NULL)
-			ft_fill_sol_tab(tree);
-		else if (ft_check_sol(tree) == 1)
 		{
 			ft_fill_sol_tab(tree);
-			ft_display(sol_tab);
+			ft_putstr("range max\n");
+		}
+		else if (ft_check_sol(tree) == 1)
+		{
+			ft_putstr("range min\n");
+			ft_fill_sol_tab(tree);
+			ft_display(ft_convert());
 		}
 	}
 	else
@@ -108,6 +115,8 @@ void	ft_parkour(t_noeud *tree, int i)
 		ft_parkour(tree->next[i], 0);
 		i++;
 	}
+	ft_putstr("solution :\n");
+	ft_display(ft_convert());
 }
 
 int		main(int argc, char **argv)
@@ -127,6 +136,5 @@ int		main(int argc, char **argv)
 	}
 	else
 		write(1, "error", 5);
+	return (0);
 }
-
-

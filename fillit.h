@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 16:36:15 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/19 17:02:22 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,11 @@ int					ft_check_for_range_max(int *tab, int *str, int n);
 
 // ft_solve.c
 int					ft_check_end(t_noeud *ptr);
+
+//parkour.c
+void				ft_parkour(t_noeud *tree, int i);
+void				ft_display(char **tab);
+int					ft_sol_range();
+char				**ft_convert();
 
 #endif

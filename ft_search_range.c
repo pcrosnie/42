@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:06:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/18 17:34:31 by pcrosnie         ###   ########.fr       */
+/*   Updated: 2015/12/19 20:27:23 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,6 @@ t_noeud		*ft_def_start_possible_position()
 	ptr->coord_piece[0] = 100;
 	ptr->next = (t_noeud **)malloc(sizeof(t_noeud *) * nb * nb);
 	ft_fill_next(ptr, nb);
-
 	ptr->prev = NULL;
 	return (ptr);
 }
