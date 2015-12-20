@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/19 17:02:22 by rdieulan         ###   ########.fr       */
+/*   Updated: 2015/12/20 14:43:49 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ void				ft_fill_sol_tab(t_noeud *ptr);
 int					*ft_set_tab_vertical(int n);
 int					*ft_set_horizontal(int n);
 int					ft_check_for_range_max(int *tab, int *str, int n);
-
-// ft_solve.c
-int					ft_check_end(t_noeud *ptr);
 
 //parkour.c
 void				ft_parkour(t_noeud *tree, int i);

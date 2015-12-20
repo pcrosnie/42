@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:42:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/20 14:41:46 by rdieulan         ###   ########.fr       */
+/*   Updated: 2015/12/20 14:37:33 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,23 @@ int		ft_sol_range()
 {
 	int nbp;
 	int i;
+	int j;
 	int range;
 
 	range = 0;
+	nbp;
 	i = 0;
-	nbp = 0;
+	j = 0;
 	while (nbp < ft_count_pieces(sol_tab))
 	{
 		i = 0;
-		while (i < 6)
+		while (i < 7)
 		{
 			if ((sol_tab[nbp][0] + sol_tab[nbp][i + 2]) > range)
 				range = (sol_tab[nbp][0] + sol_tab[nbp][i + 2]);
 			i++;
 			if ((sol_tab[nbp][1] + sol_tab[nbp][i + 2]) > range)
-				range = (sol_tab[nbp][1] + sol_tab[nbp][i + 2]);
+				range = ((sol_tab[nbp][1] + sol_tab[nbp][i + 2]);
 			i++;
 		}
 		nbp++;
@@ -50,6 +52,9 @@ char	**ft_convert()
 	i = 0;
 	j = 2;
 	srange = ft_sol_range();
+	ft_putstr("sol range :\n");
+	ft_putnbr(ft_sol_range());
+	ft_putchar('\n');
 	lettre = 'A';
 	tmp = ft_newc2d(srange, srange, '.');
 	i = 0;
@@ -99,9 +104,11 @@ void	ft_parkour(t_noeud *tree, int i)
 		if ((ft_check_sol(tree) == 0) && sol_tab == NULL)
 		{
 			ft_fill_sol_tab(tree);
+			ft_putstr("range max\n");
 		}
 		else if (ft_check_sol(tree) == 1)
 		{
+			ft_putstr("range min\n");
 			ft_fill_sol_tab(tree);
 			ft_display(ft_convert());
 		}
@@ -113,6 +120,7 @@ void	ft_parkour(t_noeud *tree, int i)
 		ft_parkour(tree->next[i], 0);
 		i++;
 	}
+	ft_putstr("solution :\n");
 	ft_display(ft_convert());
 }
 
