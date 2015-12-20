@@ -1,0 +1,59 @@
+Fillit Project : v1.2
+
+
+--- Changelog 1.1 -> 1.2 :
+
+
+===|-|-| General |-|-|===
+
+- fixed issue with tree pathfinding
+- fixed amount of memory allocated on node creation
+- 
+
+===|-|-| Source Files |-|-|===
+
+## FT_GET_COORD.C ##
+#
+- function from "ft_get_coord.c" moved -> "ft_get_tetriminos.c"
+- file "ft_get_coord.c" deleted
+
+
+## FT_GET_TETRIMINOS.C ##
+#
+- function "ft_buff_to_tab" renamed -> "ft_fill_ref_tab"
+
+
+## FT_CHECK_VALIDITY.C ##
+#
+
+## FT_PARKOUR.C ##
+#
+
+## FT_SEARCH_RANGE.C ##
+#
+
+## FT_CRUISE.C ##
+#
+
+===|-|-| Header Files |-|-|===
+
+## FILLIT.H ##
+#
+- var "ref_tab" renamed -> "g_ref_tab"
+- var "sol_tab" renamed -> "g_sol_tab"
+- func "ft_buff_to_tab" renamed -> "ft_fill_ref_tab"
+
+
+====== TO DO LIST ======
+
+- have to imagine a way to improve general treatment speed
+	+ reduce number of call on count_pieces ( stock result somewhere maybe ) ?
+	+ compare relative coord of different piece to avoid useless try between each node level ?
+	+ try first with minimum range when piece_count too high ?
+
+- intelligently free node after closure
+- make variable and function's name consistent with the use
+- norminate
+- merge
+- Fix Makefile ( make it compile libft through its own Makefile before compiling fillit, to ensure a full compatibility with other system )
+- perform more test ( to be sure everything work fine with any input )
