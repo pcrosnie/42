@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:06:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/20 19:19:45 by rdieulan         ###   ########.fr       */
+/*   Updated: 2016/01/05 18:05:19 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	ft_search_range(int	n)
 	i = 1;
 	while ((i * i) < (n * 4))
 		i++;
+	if (i < 4)
+		i = 4;
 	return (i + 1);
 }
 
@@ -139,6 +141,8 @@ void	ft_fill_next(t_noeud *ptr, int nb)
 		tmp[1]++;
 	}
 	ptr->next[index] = NULL;
+	ft_putstr(" : ");
+	ft_putnbr(index);
 }
 
 t_noeud		*ft_def_start_possible_position()
@@ -148,7 +152,7 @@ t_noeud		*ft_def_start_possible_position()
 	int		nb;
 
 	i = 0;
-	nb = ft_search_range(ft_count_pieces(g_ref_tab));
+	nb = g_info[1];
 	ptr = (t_noeud *)malloc(sizeof(t_noeud));
 	ptr->etape = 0;
 	ptr->coord_piece = (int *)malloc(sizeof(int) * 8);

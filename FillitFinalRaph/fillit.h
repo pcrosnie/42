@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/20 15:21:12 by rdieulan         ###   ########.fr       */
+/*   Updated: 2016/01/05 15:11:27 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 int		**g_ref_tab;
 int		**g_sol_tab;
+int		*g_info;
 
 typedef struct		s_noeud
 {

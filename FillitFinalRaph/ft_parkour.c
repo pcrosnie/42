@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:42:08 by pcrosnie          #+#    #+#             */
-/*   Updated: 2015/12/20 19:45:32 by rdieulan         ###   ########.fr       */
+/*   Updated: 2016/01/05 17:50:02 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_sol_range()
 	range = 0;
 	i = 0;
 	nbp = 0;
-	while (nbp < ft_count_pieces(g_sol_tab))
+	while (nbp < g_info[0])
 	{
 		i = 0;
 		while (i < 6)
@@ -53,7 +53,7 @@ char	**ft_convert()
 	lettre = 'A';
 	tmp = ft_newc2d(srange, srange, '.');
 	i = 0;
-	while (i < ft_count_pieces(g_sol_tab))
+	while (i < g_info[0])
 	{
 		tmp[g_sol_tab[i][1]][g_sol_tab[i][0]] = lettre;
 		j = 2;
@@ -94,23 +94,28 @@ void	ft_display(char **tab)
 
 void	ft_parkour(t_noeud *tree, int i)
 {
-	if (tree->etape == ft_count_pieces(g_ref_tab))
+	int	sol_range;
+	if (tree->etape == g_info[0])
 	{
-		if ((ft_check_sol(tree) == 0) && g_sol_tab == NULL)
-		{
-			ft_putstr("\nSOLUTION RANGE MAX : \n\n");
-			ft_fill_sol_tab(tree);
-		}
-		else if (ft_check_sol(tree) == 1)
-		{
-			ft_putstr("\nSOLUTION RANGE MIN : \n\n");
-			ft_fill_sol_tab(tree);
-			ft_display(ft_convert());
-		}
+			sol_range = ft_check_sol(tree);
+			if (sol_range == 0 && g_sol_tab == NULL)
+			{
+				ft_putstr("\nSOLUTION RANGE MAX : \n\n");
+				ft_fill_sol_tab(tree);
+			}
+			else if (sol_range == 1)
+			{
+				ft_putstr("\nSOLUTION RANGE MIN : \n\n");
+				ft_fill_sol_tab(tree);
+				ft_display(ft_convert());
+			}
 	}
 	else if (tree->etape != 0)
 	{
-		ft_fill_next(tree, ft_search_range(ft_count_pieces(g_ref_tab)));
+		if (g_sol_tab == NULL)
+			ft_fill_next(tree, g_info[1]);
+		else
+			ft_fill_next(tree, g_info[1] - 1);
 	}
 	while (tree->next[i])
 	{
