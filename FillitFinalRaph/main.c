@@ -6,7 +6,7 @@
 /*   By: rdieulan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/20 14:49:57 by rdieulan          #+#    #+#             */
-/*   Updated: 2016/01/05 15:11:31 by rdieulan         ###   ########.fr       */
+/*   Updated: 2016/01/06 16:47:29 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ int			main(int argc, char **argv)
 			ft_parkour(tree, 0);
 			ft_display(ft_convert());
 		}
+		else
+			write(1, "error\n", 6);
 	}
 	else
-		write(1, "error", 5);
+		write(1, "error\n", 6);
 	return (0);
 }

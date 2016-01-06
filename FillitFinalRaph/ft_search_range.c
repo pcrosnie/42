@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 15:06:27 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/01/05 18:05:19 by rdieulan         ###   ########.fr       */
+/*   Updated: 2016/01/06 16:38:37 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,6 @@ void	ft_fill_next(t_noeud *ptr, int nb)
 		tmp[1]++;
 	}
 	ptr->next[index] = NULL;
-	ft_putstr(" : ");
-	ft_putnbr(index);
 }
 
 t_noeud		*ft_def_start_possible_position()
