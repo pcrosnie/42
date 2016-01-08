@@ -6,32 +6,38 @@
 #    By: rdieulan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 14:30:37 by rdieulan          #+#    #+#              #
-#    Updated: 2015/12/17 15:42:04 by rdieulan         ###   ########.fr        #
+#    Updated: 2016/01/08 18:44:56 by rdieulan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-SRC =	ft_get_tetriminos.c\
-		ft_check_validity.c\
-		ft_get_coord.c\
-		ft_search_range.c\
-		ft_tree.c\
-		libft.a\
-
-OBJS = $(SRC:.c=.o)
+SRC =	map_get_tetriminos.c\
+		map_check_validity.c\
+		wrk_fill_node.c\
+		res_cross_n_display.c\
+		libft/libft.a\
+		main.c\
+		res_check_n_fill.c\
+		tools.c\
+		wrk_get_info.c
 
 FLAG = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME):
-	gcc -c $(FLAG) $(SRC)
+	cd libft ; make re ; cd ..
+	gcc -o $(NAME) $(FLAG) $(SRC)
 
 clean:
-	/bin/rm -f $(OBJS)
+	cd libft ; make clean ; cd ..
+	/bin/rm -f $(NAME)
 
 fclean: clean
+	cd libft ; make fclean ; cd ..
 	/bin/rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
