@@ -6,7 +6,7 @@
 #    By: rdieulan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/02 14:30:37 by rdieulan          #+#    #+#              #
-#    Updated: 2016/01/08 18:44:56 by rdieulan         ###   ########.fr        #
+#    Updated: 2016/01/08 19:19:17 by rdieulan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ $(NAME):
 
 clean:
 	cd libft ; make clean ; cd ..
-	/bin/rm -f $(NAME)
 
 fclean: clean
 	cd libft ; make fclean ; cd ..

@@ -6,22 +6,18 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/18 11:58:37 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/01/08 18:36:25 by rdieulan         ###   ########.fr       */
+/*   Updated: 2016/01/08 19:14:16 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int			*ft_fill_relative_coord(char **tab, int *str)
+int			*ft_fill_relative_coord(char **tab, int *str, int n, int k)
 {
 	int		i;
 	int		j;
-	int		k;
-	int		n;
 
 	i = 0;
-	k = 2;
-	n = 0;
 	while (i < 4)
 	{
 		j = 0;
@@ -35,16 +31,13 @@ int			*ft_fill_relative_coord(char **tab, int *str)
 			}
 			else if (tab[i][j] == '#' && n != 0)
 			{
-				str[k] = j - str[0];
-				str[k + 1] = i - str[1];
-				k += 2;
+				str[k++] = j - str[0];
+				str[k++] = i - str[1];
 			}
 			j++;
 		}
 		i++;
 	}
-	str[0] = 0;
-	str[1] = 0;
 	return (str);
 }
 
@@ -84,7 +77,7 @@ int			**ft_get_tetriminos(int fd)
 		tab = ft_fill_ref_tab(buffer);
 		if (ft_check_validity(tab) == 0)
 			return (0);
-		coord[i] = ft_fill_relative_coord(tab, coord[i]);
+		coord[i] = ft_fill_relative_coord(tab, coord[i], 0, 2);
 		i++;
 	}
 	coord[i] = NULL;

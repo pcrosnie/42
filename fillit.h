@@ -6,7 +6,7 @@
 /*   By: pcrosnie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 16:45:14 by pcrosnie          #+#    #+#             */
-/*   Updated: 2016/01/08 18:46:05 by rdieulan         ###   ########.fr       */
+/*   Updated: 2016/01/08 19:12:54 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int					ft_check_t(char **tab, int i, int j);
 
 int					**ft_get_tetriminos(int fd);
 char				**ft_fill_ref_tab(char *buff);
-int					*ft_fill_relative_coord(char **tab, int *str);
+int					*ft_fill_relative_coord(char **tab, int *str, int n, int k);
 int					ft_count_pieces(int **tab);
 
 t_noeud				*ft_def_start_possible_position();

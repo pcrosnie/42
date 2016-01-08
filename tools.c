@@ -6,7 +6,7 @@
 /*   By: rdieulan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 18:25:33 by rdieulan          #+#    #+#             */
-/*   Updated: 2016/01/08 18:31:06 by rdieulan         ###   ########.fr       */
+/*   Updated: 2016/01/08 19:16:27 by rdieulan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ int		ft_strintstr(int *tmp, int *coord)
 	int	i;
 	int	j;
 
-	i = 0;
 	j = 0;
-	if (tmp[i] == coord[j] && tmp[i + 1] == coord[j + 1])
+	if (tmp[0] == coord[j] && tmp[1] == coord[j + 1])
 		return (0);
 	i = 2;
 	while (i < 8)
